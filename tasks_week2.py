@@ -52,3 +52,42 @@ def sum_valid_ints(items: list) -> int:
             summ += int(item)
         except(ValueError, TypeError): pass
     return summ
+
+def sum_positive(numbers: list) -> int:
+    '''Сумма только положительных чисел списка. (Если пусто -> 0)'''
+    summ = 0
+    for num in numbers:
+        if num > 0:
+            summ += num
+    return summ
+
+def unique_words(text: str) -> list:
+    '''Уникальные слова в нижнем регистре, отсортированные. Подсказка: используй set() и sorted()'''
+    return sorted(list(set(text.lower().split())))
+
+def count_chars(text: str) -> dict:
+    '''Словарь "символ -> сколько раз встретился" (цикл + dict.get)'''
+    counts = {}
+    for ch in text:
+        counts[ch] = counts.get(ch, 0) + 1
+    return counts
+
+def find_max(numbers: list):
+    '''Максимум списка БЕЗ встроенной функции max(). Пустой список -> None.'''
+    if not numbers: # Проверка на пустоту
+        return None
+    maximum = numbers[0]
+    for num in numbers: # Можно итерироваться прямо по элементам, без индексов!
+        if num > maximum:
+            maximum = num
+    return maximum
+
+def group_by_length(words: list) -> dict:
+    '''Словарь "длина слова -> список слов этой длины". Подсказка: цикл и метод .setdefault()'''
+    result = {}
+    for word in words:
+        length = len(word)
+        if length not in result:
+            result[length] = []
+        result[length].append(word)
+    return result
